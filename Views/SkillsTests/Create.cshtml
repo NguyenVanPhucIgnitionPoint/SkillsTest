@@ -1,0 +1,19 @@
+﻿@model IEnumerable<SkillsTest.Models.Answer>
+
+@{
+    Layout = "_Layout";
+}
+
+@foreach (var question in ViewBag.Questions)
+{
+    <div>
+        @question.Content
+        
+        @foreach (var answer in Model)
+        {
+        <div>
+            @answer.Content
+        </div>
+        }
+    </div>
+}

@@ -50,8 +50,11 @@ namespace SkillsTest.Controllers
         }
 
         // GET: Answers/Create
+        [HttpGet]
         public IActionResult Create()
         {
+            List<Question> questions = _context.Questions.ToList();
+            ViewBag.QuestionList = new SelectList(questions, "Id", "Content");
             return View();
         }
 
@@ -64,8 +67,11 @@ namespace SkillsTest.Controllers
         {
             if (ModelState.IsValid)
             {
+                var question_id = Int32.Parse(Request.Form["QuestionId"]);
+                answer.Question = _context.Questions.Find(question_id);
                 _context.Add(answer);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(answer);

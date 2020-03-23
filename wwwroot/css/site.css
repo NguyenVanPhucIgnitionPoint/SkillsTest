@@ -67,6 +67,10 @@ body {
     padding-left: initial;
 }
 
+.btn-category-skill {
+    width: inherit;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

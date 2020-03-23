@@ -5,6 +5,10 @@ namespace SkillsTest.Data
 {
     public class SkillsTestContext : DbContext
     {
+        public SkillsTestContext()
+        {
+        }
+
         public SkillsTestContext(DbContextOptions<SkillsTestContext> options)
             : base(options)
         {

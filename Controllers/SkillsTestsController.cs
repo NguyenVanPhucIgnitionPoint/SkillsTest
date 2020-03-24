@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkillsTest.Data;
+using System.Data.SqlClient;
 using SkillsTest.Models;
+using SkillsTest.Models.Business;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,13 +30,29 @@ namespace SkillsTest.Controllers
             return View();
         }
 
+        [Obsolete]
         public IActionResult Create(int CategoryId)
         {
             ViewBag.CategoryTest = CategoryId;
 
             var category = _context.Categories.Find(CategoryId);
-            var questions = _context.Questions.Where(x => x.Category == category).ToList();
+            
+            var questions = _context.Questions.ToList();
             ViewBag.Questions = questions;
+
+         
+
+
+            //var answers = Model.Where(x => x.QuestionId == question.Id).ToList();
+            // TopBusiness top = new TopBusiness();
+            // var answers = top.GetListAnswer(@question.Id);
+
+            //TopBusiness top = new TopBusiness();
+            //var answers = top.GetListAnswer(questions.First().Id);
+            //var answers = questions.First().Answers.ToList();
+            //ViewBag.AnswerList = answers;
+
+
 
 
 

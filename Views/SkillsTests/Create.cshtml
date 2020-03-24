@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SkillsTest.Models.Answer>
+﻿@model List<SkillsTest.Models.Answer>
+@using SkillsTest.Models.Business;
 
 @{
     Layout = "_Layout";
@@ -6,14 +7,17 @@
 
 @foreach (var question in ViewBag.Questions)
 {
-    <div>
+    <strong>
         @question.Content
-        
-        @foreach (var answer in Model)
-        {
-        <div>
-            @answer.Content
-        </div>
-        }
-    </div>
+    </strong>
+    <br />
+
+    TopBusiness top = new TopBusiness();
+    var answers = top.GetListAnswer(@question.Id);
+
+    @foreach (var item in answers)
+    {
+        <input type="radio" value="@(item.Id)" name="Question@(item.Id)">
+        <lable>Hahahahahahahahhaahaha</lable>
+    }
 }
